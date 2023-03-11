@@ -1,0 +1,76 @@
+package userdefinedobjects;
+
+import java.util.Objects;
+
+public class Employee extends Person implements Comparable {
+	private long empId;
+	private String deptNo;
+	private double salary;
+
+public Employee() {
+	
+}
+public Employee(String name, String gender, int age, long empId, String deptNo, double salary) {
+	super(name, gender, age);
+	this.empId= empId;
+	this.deptNo= deptNo;
+	this.salary= salary;
+}
+public long getEmpId() {
+	return empId;
+}
+public void setEmpId(long empId) {
+	this.empId= empId;
+}
+public String getDeptNo() {
+	return deptNo;
+}
+public void setDeptNo(String deptNo) {
+	this.deptNo= deptNo;
+}
+public double salary() {
+	return salary;
+}
+public void setSalay(double salary) {
+	this.salary= salary;
+}
+@Override
+public String toString() {
+	return "Employee [empId=" + empId + ", deptNo=" + deptNo + ", salary=" + salary + ", getName()=" + getName()
+			+ ", getGender()=" + getGender() + ", getAge()=" + getAge() + "]";
+}
+@Override
+public int hashCode() {
+	return Objects.hash(deptNo, empId, salary);
+}
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Employee other = (Employee) obj;
+	return Objects.equals(deptNo, other.deptNo) && empId == other.empId
+			&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
+}
+@Override// compareTo is used to print it in order
+public int compareTo(Object o) {
+	Employee ref= null;
+	if(o != null) {
+		ref= (Employee) o;
+	}
+	if(this.empId < ref.getEmpId())
+		return -1;// for ascending order -1
+	else if(this.empId > ref.getEmpId())
+		return 1;// for descending order 1
+	else
+		return 0;
+}
+
+//public int hashCode() {
+	//int code= this.hashCode()*32*((int)this.empId)*(this.getName().length())*this.deptNo.length();
+	//return super.hashCode();
+}
+
