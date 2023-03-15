@@ -1,6 +1,5 @@
 package day4.polymorphism;
-
-import java.awt.Rectangle;
+import java.awt.Shape;
 
 public class TestShape {
 	public static void main(String[] args) {
